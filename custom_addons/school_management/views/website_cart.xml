@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <data>
+        <template id="clear_cart_button" inherit_id="website_sale.cart_lines" name=" Clear cart">
+            <xpath expr="//div[@id='cart_products']" position="after">
+                <div class="clear">
+                    <a href="/shop/clear_cart" id="clear_cart_button" class="btn btn-primary mb32">
+                        <span class="fa fa-trash-o"/> Clear Cart
+                    </a>
+                </div>
+            </xpath>
+        </template>
+    </data>
+</odoo>
+

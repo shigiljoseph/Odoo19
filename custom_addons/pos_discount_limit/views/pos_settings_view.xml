@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="view_pos_settings_form_inherit" model="ir.ui.view">
+            <field name="name">pos.settings.form.inherit</field>
+            <field name="model">res.config.settings</field>
+            <field name="inherit_id" ref="point_of_sale.res_config_settings_view_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//block[@id='pos_payment_section']" position="inside">
+                    <setting id="discount_limit"
+                             string="Limit the discount"
+                             help="To limit the discount based on the pos category">
+                        <field name="limit_active"/>
+                        <div invisible="not limit_active">
+                             <div class="o_row " >
+                                 <label for="product_category_ids" string="Category"   />
+                                 <field  name="product_category_ids"  widget="many2many_tags" class="w-50" />
+                             </div>
+                             <div class="o_row">
+                                 <label for="limit" string="Limit" />
+                                 <field name="limit" class="w-50" widget="percentage"/>
+                             </div>
+                        </div>
+                    </setting>
+                </xpath>
+            </field>
+        </record>
+    </data>
+</odoo>

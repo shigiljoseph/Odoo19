@@ -1,0 +1,41 @@
+<odoo>
+
+    <record id="subjects_view_list" model="ir.ui.view">
+        <field name="name">subject_list</field>
+        <field name="model">subjects</field>
+        <field name="arch" type="xml">
+            <list string="view" >
+                    <field name="name"/>
+                    <field name="department_id"/>
+            </list>
+        </field>
+    </record>
+
+    <record id="subjects_view_form" model="ir.ui.view">
+        <field name="name">subject_list</field>
+        <field name="model">subjects</field>
+        <field name="arch" type="xml">
+            <form string="view" >
+                <header>
+                    <button name="action_confirm" type="object" string="Confirm" class="btn-primary"/>
+                </header>
+                <sheet>
+                    <group>
+                        <field name="name"/>
+                        <field name="department_id"/>
+                        <field name="purchase_id"/>
+                        <field name="product_id"/>
+                        <field name="price"/>
+                    </group>
+                </sheet>
+                <chatter/>
+            </form>
+        </field>
+    </record>
+
+    <record id="subjects_action" model="ir.actions.act_window">
+        <field name="name">Subjects</field>
+        <field name="res_model">subjects</field>
+        <field name="view_mode">list,form</field>
+    </record>
+</odoo>

@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <record id="view_employee_transfer_list" model="ir.ui.view">
+    <field name="name">employee.transfer.list</field>
+        <field name="model">employee.transfer</field>
+        <field name="arch" type="xml">
+            <list string="Employee Transfers">
+                <field name="emp_id" string="Employee Name"/>
+                <field name="date"/>
+                <field name="company_id"/>
+                <field name="transfer_cmp_id"/>
+                <field name="create_uid" string="Created"/>
+                <field name="write_uid" string="Modified"/>
+                <field name="status"/>
+            </list>
+        </field>
+    </record>
+
+
+    <record id="view_employee_transfer_form" model="ir.ui.view">
+        <field name="name">employee.transfer.form</field>
+        <field name="model">employee.transfer</field>
+        <field name="arch" type="xml">
+            <form string="Employee Transfer" >
+                 <header>
+                    <button name="action_request" type="object" string="Request" class="btn-primary"
+                            invisible="status == 'requested' or status == 'done'"/>
+                    <button name="action_done" type="object" string="Done" invisible="status == 'done'"/>
+                    <field name="status" widget="statusbar" statusbar_visible="draft,requested,done"/>
+                </header>
+                <sheet>
+                    <group >
+                            <field name="emp_id" string="Employee Name" readonly="status == 'done'"/>
+                            <field name="date" readonly="status == 'done'"/>
+                            <field name="company_id" readonly="status == 'done'" />
+                            <field name="transfer_cmp_id" readonly="status == 'done'" domain="[('id', '!=', company_id)]"/>
+                            <field name="create_uid" string="Created" readonly="1"/>
+                            <field name="write_uid" string="Modified" readonly="1"/>
+                        </group>
+                    </sheet>
+                <chatter/>
+                </form>
+            </field>
+        </record>
+
+
+    <record id="employee_transfer_view" model="ir.actions.act_window">
+        <field name="name">Employee Transfer</field>
+        <field name="res_model">employee.transfer</field>
+        <field name="view_mode">list,form</field>
+    </record>
+</odoo>

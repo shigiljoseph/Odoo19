@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <record id="email_template_employee_invitation" model="mail.template">
+        <field name="name">User invitation</field>
+        <field name="model_id" ref="school_management.model_res_partner"/>
+        <field name="subject">Welcome to our school!</field>
+        <field name="email_from">{{object.email}}</field>
+        <field name="body_html" type="html">
+            <div >
+                <p>Hello,</p>
+                <p>Welcome to our school,your
+                    username and password is
+                    <strong>
+                        <t t-out="object.email"/>
+                    </strong></p>
+                <p>Thank you.</p>
+            </div>
+        </field>
+    </record>
+</odoo>

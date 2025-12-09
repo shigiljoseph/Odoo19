@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+   <record id="purchase_order_form_inherit" model="ir.ui.view">
+        <field name="name">purchase order</field>
+        <field name="model">purchase.order</field>
+        <field name="inherit_id" ref="purchase.purchase_order_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='partner_ref']" position="after">
+                <field name="block_id"/>
+            </xpath>
+            <xpath expr="//header" position="inside">
+                <button name="action_add_lines" type="object" string="Add All" invisible="state != 'draft'"/>
+            </xpath>
+            <xpath expr="//notebook" position="inside">
+                <page name="Existing Lines" String="Existing Lines">
+                    <field name="existing_lines" >
+                    <list string="Purchase Order Lines" create="false">
+                        <field name="order_id"/>
+                        <field name="name"/>
+                        <field name="partner_id" string="Vendor"/>
+                        <field name="product_id"/>
+                        <field name="price_unit"/>
+                        <field name="product_qty" />
+                        <field name="product_uom_id" groups="uom.group_uom" widget="many2one_uom"/>
+                        <field name="price_subtotal" widget="monetary"/>
+                        <field name="currency_id" column_invisible="True"/>
+                        <button name="action_add_line" type="object" string="Add" invisible="visible"/>
+                    </list>
+                    </field>
+                </page>
+            </xpath>
+        </field>
+    </record>
+</odoo>

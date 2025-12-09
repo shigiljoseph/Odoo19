@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <record id="create_order_wizard_form_view" model="ir.ui.view">
+        <field name="name">create order</field>
+        <field name="model">create.order</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                        <field name="partner_id"/>
+                    </group>
+                </sheet>
+                <footer>
+                    <button name="action_create_order" type="object" string="create"/>
+                    <button string="Discard" special="cancel" class="oe_link"/>
+                </footer>
+            </form>
+        </field>
+    </record>
+
+    <record id="create_order_wizard_form_11_view" model="ir.actions.act_window">
+        <field name="name">Create Order Wizard</field>
+        <field name="res_model">create.order</field>
+        <field name="view_mode">form</field>
+        <field name="target">new</field>
+        <field name="binding_model_id" ref="block_po.model_sale_order_line"/>
+        <field name="binding_view_types">list,form</field>
+        <field name="binding_type">action</field>
+    </record>
+</odoo>

@@ -1,0 +1,292 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+
+
+
+    <!--    Leave information template-->
+
+    <template id="leave_information_report">
+    <t t-set="data_report_landscape" t-value="True"/>
+    <t t-call="web.html_container">
+        <t t-call="web.external_layout">
+            <style>
+                td, th { text-align: center; vertical-align: middle; }
+            </style>
+            <div>
+                <h2 align="center">Student Leave Report</h2>
+
+                <div align="right">
+                    <h5><strong>Date:</strong> <span t-esc="datetime.datetime.now().strftime('%Y-%m-%d')"/><br/></h5>
+                    <h5><t t-if="data.get(from_date)"><strong>From </strong><span t-esc="data.get('from_date')"/></t>
+                        <t t-if="data.get(to_date)"> <strong> To </strong> <span t-esc="data.get('to_date')"/></t></h5>
+                </div>
+
+                <t t-if="student_id ">
+                    <t t-foreach="docs" t-as="record">
+                        <div>
+                            <h5><strong>Admission No:</strong> <span t-esc="record.get('admission_no')"/><br/></h5>
+                            <h5><strong>Name:</strong> <span t-esc="record.get('first_name')"/> <span t-esc="record.get('last_name')"/><br/></h5>
+                            <h5><strong>Class:</strong> <span t-esc="record.get('cname')"/><br/></h5>
+                        </div>
+                    </t>
+                </t>
+                <t t-if="student_class_id and not student_id">
+                    <div>
+                        <h5><strong>Class:</strong> <span t-esc="student_class_id"/></h5>
+                    </div>
+                </t>
+                <table class="table table-bordered">
+                    <thead>
+                        <tr>
+                            <t t-if="not student_id">
+                                <th>Sl.No</th>
+                                <th>Admission No</th>
+                                <th>First Name</th>
+                                <th>Last Name</th>
+                            </t>
+                            <t t-if="not student_class_id">
+                                <th>Class</th>
+                            </t>
+
+                            <th>Email</th>
+                            <th>Gender</th>
+                            <th>From Date</th>
+                            <th>To Date</th>
+                            <th>Duration</th>
+                            <th>Reason</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <t t-foreach="docs" t-as="record">
+                            <tr>
+                                <t t-if="not student_id">
+                                    <td><span t-esc="record_index + 1"/></td>
+                                    <td><span t-esc="record.get('admission_no')"/></td>
+                                    <td><span t-esc="record.get('first_name')"/></td>
+                                    <td><span t-esc="record.get('last_name')"/></td>
+                                </t>
+                                <t t-if="not student_class_id">
+                                    <td><span t-esc="record.get('cname')"/></td>
+                                </t>
+
+                                <td><span t-esc="record.get('email')"/></td>
+                                <td><span t-esc="record.get('gender')"/></td>
+                                <td><span t-esc="record.get('start_date')"/></td>
+                                <td><span t-esc="record.get('end_date')"/></td>
+                                <td><span t-esc="record.get('total_days')"/></td>
+                                <td><span t-esc="record.get('reason')"/></td>
+                            </tr>
+                        </t>
+                    </tbody>
+                </table>
+            </div>
+        </t>
+    </t>
+</template>
+
+
+
+<!--    Event information template-->
+
+    <template id="event_information_report">
+        <t t-call="web.html_container">
+            <t t-call="web.external_layout">
+                <style>
+                    td, th {
+                        text-align: center;
+                        vertical-align: middle;
+                    }
+                </style>
+                <div >
+                    <h2 class="text-center">School Event Report</h2>
+                    <div align="right">
+                        <h5><strong>Date:</strong> <span t-esc="datetime.datetime.now().strftime('%Y-%m-%d')"/><br/></h5>
+                        <h5><t t-if="data.get(from_date)"><strong>From </strong><span t-esc="data.get('from_date')"/></t>
+                        <t t-if="data.get(to_date)"> <strong> To </strong> <span t-esc="data.get('to_date')"/></t></h5>                    </div>
+                    <t t-if="club_id">
+                        <t t-foreach="docs" t-as="record">
+                        <h5><strong>Club : </strong><span t-esc="record.get('cname')"/> </h5>
+                        <h5><strong>Incharge : </strong><span t-esc="record.get('rname')"/> </h5>
+                        </t>
+                    </t>
+                    <table class="table table-bordered">
+                        <thead>
+                            <tr>
+                                <th>Sl.No</th>
+                                <th>Event Name</th>
+                                <th>From Date</th>
+                                <th>To Date</th>
+                                <th>Status</th>
+                                <t t-if="not club_id">
+                                    <th>Club Name</th>
+                                    <th>Incharge</th>
+                                </t>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <t t-foreach="docs" t-as="record">
+                                <tr>
+                                    <td><span t-esc="record_index + 1"/> </td>
+                                    <td><span t-esc="record.get('name')"/></td>
+                                    <td><span t-esc="record.get('start_date')"/></td>
+                                    <td><span t-esc="record.get('end_date')"/></td>
+                                    <td><span t-esc="record.get('status')"/></td>
+                                    <t t-if="not club_id">
+                                        <td><span t-esc="record.get('cname')"/></td>
+                                        <td><span t-esc="record.get('rname')"/></td>
+                                    </t>
+                                </tr>
+                            </t>
+                        </tbody>
+                    </table>
+                </div>
+            </t>
+        </t>
+    </template>
+
+<!--    Club information template-->
+
+    <template id="club_information_report">
+        <t t-call="web.html_container">
+            <t t-call="web.external_layout">
+                <style>
+                    td, th {
+                        text-align: center;
+                        vertical-align: middle;
+                    }
+                </style>
+                <div >
+                    <h2 class="text-center">School Club Report</h2>
+                    <t t-if="student_id ">
+                        <t t-foreach="docs" t-as="record">
+                            <div align="right">
+                                <h5><strong>Date:</strong> <span t-esc="datetime.datetime.now().strftime('%Y-%m-%d')"/><br/></h5>
+                            </div>
+                            <div>
+                                <h5><strong>Admission No:</strong> <span t-esc="record.get('admission_no')"/><br/></h5>
+                                <h5><strong>Name:</strong> <span t-esc="record.get('first_name')"/> <span t-esc="record.get('last_name')"/><br/></h5>
+                                <h5><strong>Class:</strong> <span t-esc="record.get('class')"/><br/></h5>
+                                <t t-if="club_id">
+                                    <h5><strong>Club:</strong> <span t-esc="record.get('cname')"/><br/></h5>
+                                </t>
+                            </div>
+                        </t>
+                    </t>
+                    <t t-if="club_id and not student_id">
+                        <div>
+                            <h5><strong>Club:</strong> <span t-esc="cname"/></h5>
+                        </div>
+                    </t>
+                    <t t-if="not student_id and not club_id">
+                    <t t-foreach="clubs" t-as="club">
+                        <h4 align="center"><t t-esc="club"/></h4>
+                         <table class="table table-bordered" >
+                            <thead>
+                                <tr>
+                                    <th>Sl.No</th>
+                                    <th>Admission No</th>
+                                    <th>First Name</th>
+                                    <th>Last Name</th>
+                                    <th>Class</th>
+                                    <th>Email</th>
+                                    <th>Gender</th>
+                                    <th>Club</th>
+                                    <th>Incharge</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <t t-foreach="docs" t-as="record">
+                                    <t t-if="record.get('cname') == club">
+                                        <tr>
+                                            <td><span t-esc="record_index + 1"/> </td>
+                                            <td><span t-esc="record.get('admission_no')"/></td>
+                                            <td><span t-esc="record.get('first_name')"/></td>
+                                            <td><span t-esc="record.get('last_name')"/></td>
+                                            <td><span t-esc="record.get('class')"/></td>
+                                            <td><span t-esc="record.get('email')"/></td>
+                                            <td><span t-esc="record.get('gender')"/></td>
+                                            <td><span t-esc="record.get('cname')"/></td>
+                                            <td><span t-esc="record.get('rname')"/></td>
+                                        </tr>
+                                    </t>
+                                </t>
+                            </tbody>
+                        </table>
+                    </t>
+                    </t>
+
+
+                    <t t-if="not student_id and  club_id">
+                        <h4 align="center"><t t-esc="docs[0].cname"/></h4>
+                         <table class="table table-bordered" >
+                            <thead>
+                                <tr>
+                                    <th>Sl.No</th>
+                                    <th>Admission No</th>
+                                    <th>First Name</th>
+                                    <th>Last Name</th>
+                                    <th>Class</th>
+                                    <th>Email</th>
+                                    <th>Gender</th>
+                                    <th>Club</th>
+                                    <th>Incharge</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <t t-foreach="docs" t-as="record">
+                                    <t t-if="record.get('cname') == club">
+                                        <tr>
+                                            <td><span t-esc="record_index + 1"/> </td>
+                                            <td><span t-esc="record.get('admission_no')"/></td>
+                                            <td><span t-esc="record.get('first_name')"/></td>
+                                            <td><span t-esc="record.get('last_name')"/></td>
+                                            <td><span t-esc="record.get('class')"/></td>
+                                            <td><span t-esc="record.get('email')"/></td>
+                                            <td><span t-esc="record.get('gender')"/></td>
+                                            <td><span t-esc="record.get('cname')"/></td>
+                                            <td><span t-esc="record.get('rname')"/></td>
+                                        </tr>
+                                    </t>
+                                </t>
+                            </tbody>
+                        </table>
+                    </t>
+
+
+                    <t t-if="student_id">
+                        <table class="table table-bordered">
+                            <thead>
+                                <tr>
+                                    <th>Sl.No</th>
+                                    <th>Email</th>
+                                    <th>Gender</th>
+                                    <t t-if="not club_id">
+                                        <th>Club Name</th>
+                                    </t>
+                                    <th>Incharge</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <t t-foreach="docs" t-as="record">
+                                    <tr>
+                                        <td><span t-esc="record_index + 1"/> </td>
+                                        <td><span t-esc="record.get('email')"/></td>
+                                        <td><span t-esc="record.get('gender')"/></td>
+                                        <t t-if="not club_id">
+                                            <td><span t-esc="record.get('cname')"/></td>
+                                        </t>
+                                        <td><span t-esc="record.get('rname')"/></td>
+                                    </tr>
+                                </t>
+                            </tbody>
+                        </table>
+                    </t>
+
+
+                </div>
+            </t>
+        </t>
+    </template>
+
+
+</odoo>

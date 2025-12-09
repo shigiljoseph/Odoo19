@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates id="template" xml:space="preserve">
+   <t t-name="custom_pos_receipt.OrderReceipt"
+      t-inherit="point_of_sale.Orderline" t-inherit-mode="extension">
+        <xpath expr="//div[hasclass('product-name')]" position="inside">
+
+           <t t-if="this.props.line.product_id.product_tmpl_id.brand_id">
+                <div>
+                    - Brand -  <t t-esc="this.props.line.product_id.product_tmpl_id.brand_id.name"/>
+                </div>
+           </t>
+       </xpath>
+   </t>
+</templates>

@@ -1,0 +1,123 @@
+
+
+
+<odoo>
+    <record id="test_modal_form" model="ir.ui.view">
+        <field name="name">Test action</field>
+        <field name="model">test_model</field>
+        <field name="arch" type="xml" >
+
+
+            <form string="View" readonly="status == 'Sold'" >
+
+                <header>
+
+
+                    <button name="sold" type="object" string="Sold" invisible="status != 'New'"/>
+                    <button name="canceled" type="object" string="Cancel" invisible="status != 'New'"/>
+                    <field name="status" widget="statusbar" statusbar_visible="New,Canceled,Sold"/>
+                </header>
+                <sheet >
+
+                         <h1 align="left" width="200px">Name        <field name="name" /></h1>
+                        <h5 align="left">Tag         <field name="tag" string="Tag" widget="many2many_tags" options="{'color_field':'color'}"/></h5>
+
+                    <group>
+                    <group>
+<!--                        <field name="offer_id" widget="many2many_tags"/>-->
+                        <field name="post_code"/>
+                        <field name="Expected_Price"/>
+                        <field name="date"/>
+
+                    </group>
+                    <group>
+                        <field name="garden"/>
+                        <field name="garden_area" invisible="not garden"/>
+                        <field name="garden_orientation" invisible="garden != True"/>
+                        <field name="living_area"/>
+                        <field name="total_area"/>
+                        <field name="selling_price"/>
+                        <field name="best_price"/>
+
+                    </group>
+                    </group>
+                    <notebook>
+                        <page string="Description">
+                            <group>
+                                <field name="description"/>
+                            </group>
+                        </page>
+                        <page string="Rooms">
+                            <group>
+                                <field name="bedrooms"/>
+                                <field name="living_area"/>
+                                <field name="sales_person"/>
+                                <field name="buyer_id"/>
+                            </group>
+                        </page>
+                        <page string="Offers">
+                        <field name="offer_ids"  readonly="status != 'New'" ></field>
+
+                        </page>
+
+                        <page string="property types">
+                            <field name="property_type">
+                                <list>
+                                    <field name="name"/>
+                                </list>
+                            </field>
+                        </page>
+
+                    </notebook>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+
+    <record id="test_modal_list" model="ir.ui.view">
+        <field name="name">Test action</field>
+        <field name="model">test_model</field>
+        <field name="arch" type="xml">
+            <list string="Tests">
+                <field name="name"/>
+                <field name="selling_price"/>
+                <field name="date"/>
+            </list>
+        </field>
+    </record>
+
+    <record id="test_modal_search" model="ir.ui.view">
+        <field name="name">Test action</field>
+        <field name="model">test_model</field>
+        <field name="arch" type="xml">
+            <search string="Tests">
+                <field name="name"/>
+                <field name="status" string="Status" filter_domain="[('status', 'ilike', self)]"/>
+<!--                <field name="selling_price"/>-->
+<!--                <field name="date"/>-->
+            </search>
+        </field>
+    </record>
+
+<!--   <record id="property_types_view" model="ir.ui.view">-->
+<!--           -->
+<!--   </record>-->
+
+    <record id="test_model_action" model="ir.actions.act_window">
+        <field name="name">Property Deals</field>
+        <field name="res_model">test_model</field>
+        <field name="view_mode">list,kanban,form,search</field>
+    </record>
+
+</odoo>
+
+
+
+
+
+
+
+
+
+

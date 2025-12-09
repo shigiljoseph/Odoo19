@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+        <template id="school_event_form_template" name="School Events">
+            <t t-call="website.layout">
+                   <div id="wrap" class="oe_structure oe_empty">
+                           <div class="container">
+                               <form action="/submit/event" enctype="multipart/form-data" class="o_mark_required" method="POST">
+                                   <input type="hidden" name="csrf_token" t-att-value="request.csrf_token()"/>
+                                   <div class="p-4 bg-light rounded shadow-sm">
+                                       <h2 class="text-center mb-4">School Events </h2>
+                                   </div>
+                                   <div class="form-group col-12">
+                                       <!-- Name Field -->
+                                       <div class="form-group col-12">
+                                           <div class="row">
+                                               <label class="col-form-label col-sm-auto" style="width: 200px;" for="name">
+                                                   Name<span class="text-danger"> *</span>
+                                               </label>
+                                               <input id="name" type="text" class="form-control" name="name" required="1"/>
+                                           </div>
+                                       </div>
+
+                                       <div class="row">
+                                           <label class="col-form-label col-sm-auto" style="width: 200px;" for="club_id">
+                                               Club<span class="text-danger"> *</span>
+                                           </label>
+                                           <div>
+                                            <select name="club_id" class="form-control" required="1" id="club_id">
+                                                <option> </option>
+                                                <t t-foreach="clubs" t-as="club">
+                                                    <option t-att-value="club.id"><t t-esc="club.name"/></option>
+                                                </t>
+                                            </select>
+                                           </div>
+                                       </div>
+
+                                       <!--  Start Date-->
+
+                                       <div class="form-group col-12" >
+                                           <div class="row">
+                                               <label class="col-form-label col-sm-auto" style="width: 200px;" for="start_date">
+                                                   Start date<span class="text-danger"> *</span>
+                                               </label>
+                                               <input id="start_date" type="date" class="form-control" name="start_date" required="1"/>
+                                           </div>
+                                       </div>
+
+                                       <div class="form-group col-12">
+                                           <div class="row">
+                                               <label class="col-form-label col-sm-auto" style="width: 200px;" for="end_date">
+                                                   End date<span class="text-danger"> *</span>
+                                               </label>
+                                               <input id="end_date" type="date" class="form-control" name="end_date" required="1"/>
+                                           </div>
+                                       </div>
+
+                                       <div class="form-group col-12">
+                                           <div class="row">
+                                               <label class="col-form-label col-sm-auto" style="width: 200px;" for="end_date">
+                                                   Image<span class="text-danger"> *</span>
+                                               </label>
+                                               <input type="file" accept="image/*" class="form-control" name="image" required="1"/>                                              </div>
+                                       </div>
+                                       <br/>
+
+                                       <div class="form-group col-12" align="center">
+                                           <div style="width: 200px;"></div>
+                                           <button type="submit" class="btn btn-primary" >Submit</button>
+                                       </div>
+                                   </div>
+                               </form>
+                               <br/>
+                           </div>
+                   </div>
+               </t>
+    </template>
+</odoo>
+

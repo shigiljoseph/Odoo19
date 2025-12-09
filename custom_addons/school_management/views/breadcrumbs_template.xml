@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <data>
+        <template id="student_breadcrumbs" name="Student Registration" inherit_id="portal.portal_breadcrumbs">
+            <xpath expr="//ol[hasclass('o_portal_submenu')]" position="inside">
+                <li t-if="page_name in ['student_registration', 'student_edit_form','student_list']" class="breadcrumb-item">
+                    <a t-attf-href="/student_list">Student List</a>
+                </li>
+                <li t-if="page_name == 'student_registration'" class="breadcrumb-item active">
+                    Student Registration
+                </li>
+                <li t-if="page_name == 'student_edit_form'" class="breadcrumb-item active">
+                    Edit Student
+                </li>
+            </xpath>
+        </template>
+    </data>
+</odoo>

@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <record id="product_normal_form_view" model="ir.ui.view">
+        <field name="name">Products</field>
+        <field name="model">product.product</field>
+        <field name="inherit_id" ref="product.product_normal_form_view"/>
+        <field name="arch" type="xml">
+            <xpath expr="//div[@name='standard_price_uom']" position="after">
+                <div class="o_cell o_cell_custom o_wrap_label text-break text-900">
+                    <label for="average_cost">average Cost</label>
+
+                </div>
+                <div>
+                    <field id="average_cost" name="average_cost"/>
+                </div>
+                <div></div>
+                <br/>
+            </xpath>
+        </field>
+    </record>
+</odoo>

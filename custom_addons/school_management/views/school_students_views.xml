@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<odoo>
+    <record id="school_students_action" model="ir.actions.act_window">
+        <field name="name">Students</field>
+        <field name="res_model">student.registration</field>
+        <field name="domain">[('status','!=', 'draft')]</field>
+        <field name="context">{'create': False}</field>
+    </record>
+</odoo>

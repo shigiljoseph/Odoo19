@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+  <data >
+
+    <record id="action_create_user_on_registration" model="ir.actions.server">
+            <field name="name">Create User when student registered</field>
+            <field name="model_id" ref="school_management.model_student_registration"/>
+            <field name="state">code</field>
+            <field name="code">
+model.action_create_user(record)
+            </field>
+        </record>
+
+        <record id="automated_action_create_user_on_registration" model="base.automation">
+            <field name="name">Create user on registration</field>
+            <field name="model_id" ref="school_management.model_student_registration"/>
+            <field name="trigger">on_create_or_write</field>
+            <field name="trigger_field_ids" eval="[(Command.link(ref('field_student_registration__admission_no')))]"/>
+            <field name="filter_domain">[('status', '=', 'reg')]</field>
+            <field name="action_server_ids" eval="[(Command.link(ref('action_create_user_on_registration')))]"/>
+        </record>
+    </data>
+</odoo>

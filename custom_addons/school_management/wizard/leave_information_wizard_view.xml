@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <record id="leave_information_view" model="ir.ui.view">
+        <field name="name">Leave Information Report</field>
+        <field name="model">leave.information</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="period"/>
+                            <field name="from_date" invisible="period!='custom'"/>
+                            <field name="to_date" invisible="period!='custom'"/>
+                        </group>
+                        <group>
+                            <field name="student_class_id" options="{'no_create': True}"/>
+                            <field name="student_id"
+                                   domain="student_class_id and [('current_class_id', '=', student_class_id)] or []"
+                                   options="{'no_create': True}"/>
+                        </group>
+                    </group>
+                </sheet>
+                <footer>
+                    <button name="action_print_report" type="object" string="Print PDF" class="btn-primary"/>
+                    <button name="action_xl_report" type="object" string="Print XL" class="btn-primary"/>
+                    <button string="Discard" special="cancel" class="oe_link"/>
+                </footer>
+            </form>
+        </field>
+    </record>
+
+    <record id="leave_information_wizard_view" model="ir.actions.act_window">
+        <field name="name">Leave Information Report</field>
+        <field name="res_model">leave.information</field>
+        <field name="view_mode">form</field>
+        <field name="target">new</field>
+    </record>
+
+
+</odoo>

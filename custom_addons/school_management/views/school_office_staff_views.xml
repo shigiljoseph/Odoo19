@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<odoo>
+    <record id="school_office_staff_action" model="ir.actions.act_window">
+        <field name="name">Office staff </field>
+        <field name="res_model">res.partner</field>
+        <field name="domain">[('role','=', 'office')]</field>
+        <field name="context">{'default_role': 'office'}</field>
+        <field name="view_mode">kanban,list,form</field>
+    </record>
+
+</odoo>

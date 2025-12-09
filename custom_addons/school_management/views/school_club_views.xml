@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+
+    <record id="school_club_form_view" model="ir.ui.view">
+        <field name="name"> Club </field>
+        <field name="model">school.club</field>
+        <field name="arch" type="xml">
+            <form string="View">
+                <sheet>
+                    <div name="button_box" position="inside"  invisible="not event_count">
+                    <button class="oe_stat_button"
+                             type="object"
+                             icon="fa-bell"
+                             name="action_events">
+                        <field string='Event' name="event_count" widget="statinfo"/>
+                    </button>
+                </div>
+                    <group>
+                        <field name="name"/>
+                        <field name="incharge_id"/>
+                    </group>
+                    <group>
+                        <field name="color" widget="color_picker"/>
+                    </group>
+                    <notebook>
+                        <page string="Members">
+
+                                <field name="members_ids"/>
+
+                        </page>
+                    </notebook>
+                </sheet>
+                <chatter/>
+            </form>
+        </field>
+    </record>
+
+    <record id="school_club_view_list" model="ir.ui.view">
+        <field name="name">club</field>
+        <field name="model">school.club</field>
+        <field name="arch" type="xml">
+            <list string="view" >
+                <field name="name"/>
+                <field name="incharge_id"/>
+                <field name="color" widget="color_picker"/>
+            </list>
+        </field>
+    </record>
+
+    <record id="school_club_action" model="ir.actions.act_window">
+        <field name="name">School Clubs</field>
+        <field name="res_model">school.club</field>
+        <field name="view_mode">list,form</field>
+    </record>
+
+
+</odoo>

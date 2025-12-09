@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="block_data_1" model="approval.block">
+            <field name="name">1</field>
+            <field name="block">5000</field>
+        </record>
+
+        <record id="block_dta_2" model="approval.block">
+            <field name="name">2</field>
+            <field name="block">10000</field>
+        </record>
+
+        <record id="block_data_3" model="approval.block">
+            <field name="name">2</field>
+            <field name="block">12000</field>
+        </record>
+
+    </data>
+</odoo>

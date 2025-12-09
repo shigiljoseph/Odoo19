@@ -1,0 +1,32 @@
+<odoo>
+
+
+<!--    <record id="property_form_view" model="ir.ui.view">-->
+<!--        <field name="name">Property type</field>-->
+<!--        <field name="model">property_models</field>-->
+<!--        <field name="arch" type="xml" >-->
+<!--            <form string="View">-->
+<!--                <sheet>-->
+<!--                    <div name="button_box" position="inside">-->
+<!--                         <button class="oe_stat_button"-->
+<!--                                 type="action"-->
+<!--                                 icon="fa-taxi"-->
+<!--                                 name="%(estate_offer_action)d">-->
+<!--                         </button>-->
+<!--                     </div>-->
+<!--                    <group>-->
+<!--                        <field name="name" string="Name"/>-->
+<!--                    </group>-->
+<!--                    <field name="offer_count"/>-->
+<!--                </sheet>-->
+<!--            </form>-->
+<!--        </field>-->
+<!--    </record>-->
+
+    <record id="property_model_action" model="ir.actions.act_window">
+        <field name="name">Property Type</field>
+        <field name="res_model">property_models</field>
+        <field name="view_mode">list,form,search</field>
+    </record>
+
+</odoo>

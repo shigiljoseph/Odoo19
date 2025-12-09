@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+
+<!--    Student Access-->
+    <record id="student_own_class_record_rule" model="ir.rule">
+        <field name="name">User can only see their own class</field>
+        <field ref="model_student_class" name="model_id"/>
+        <field name="domain_force">[('student_ids.email', 'in', user.email)]</field>
+        <field name="groups" eval="[(Command.link(ref('school_management.student_group_students')))]"/>
+    </record>
+
+    <record id="student_own_details_record_rule" model="ir.rule">
+        <field name="name">User can only see their own details</field>
+        <field ref="model_student_registration" name="model_id"/>
+        <field name="domain_force">[('email','=',user.email)]</field>
+        <field name="groups" eval="[(Command.link(ref('school_management.student_group_students')))]"/>
+    </record>
+
+    <record id="student_own_exam_record_rule" model="ir.rule">
+        <field name="name">User can only see their own exam</field>
+        <field ref="model_student_exam" name="model_id"/>
+        <field name="domain_force">[('class_id.student_ids.email', 'in', user.email)]</field>
+        <field name="groups" eval="[(Command.link(ref('school_management.student_group_students')))]"/>
+        <field name="perm_read" eval="True"/>
+        <field name="perm_write" eval="False"/>
+        <field name="perm_create" eval="False"/>
+        <field name="perm_unlink" eval="False"/>
+    </record>
+
+    <record id="student_own_events_record_rule" model="ir.rule">
+        <field name="name">User can only see their own events</field>
+        <field ref="model_school_events" name="model_id"/>
+        <field name="domain_force">[('club_id.members_ids.email', 'in', user.email)]</field>
+        <field name="groups" eval="[(Command.link(ref('school_management.student_group_students')))]"/>
+    </record>
+
+<!--    Multi company-->
+
+    <record id="events_company_record_rule" model="ir.rule">
+        <field name="name">company own events</field>
+        <field ref="model_school_events" name="model_id"/>
+        <field name="global" eval="True"/>
+        <field name="domain_force">[ ('school_id', 'in', company_ids )]</field>
+    </record>
+
+     <record id="student_company_record_rule" model="ir.rule">
+        <field name="name">company own students</field>
+        <field ref="model_student_registration" name="model_id"/>
+        <field name="global" eval="True"/>
+        <field name="domain_force">[ ('school_id', 'in', company_ids )]</field>
+    </record>
+
+     <record id="subject_company_record_rule" model="ir.rule">
+        <field name="name">company own subjects</field>
+        <field ref="model_subjects" name="model_id"/>
+        <field name="global" eval="True"/>
+        <field name="domain_force">[ ('school_id', 'in', company_ids )]</field>
+    </record>
+
+     <record id="leave_company_record_rule" model="ir.rule">
+        <field name="name">company own leave</field>
+        <field ref="model_student_leave" name="model_id"/>
+        <field name="global" eval="True"/>
+        <field name="domain_force">[ ('school_id', 'in', company_ids )]</field>
+    </record>
+
+     <record id="exam_company_record_rule" model="ir.rule">
+        <field name="name">company own exam</field>
+        <field ref="model_student_exam" name="model_id"/>
+        <field name="global" eval="True"/>
+        <field name="domain_force">[ ('school_id', 'in', company_ids )]</field>
+    </record>
+
+     <record id="class_company_record_rule" model="ir.rule">
+        <field name="name">company own class</field>
+        <field ref="model_student_class" name="model_id"/>
+        <field name="global" eval="True"/>
+        <field name="domain_force">[ ('school_id', 'in', company_ids )]</field>
+    </record>
+
+    <record id="club_company_record_rule" model="ir.rule">
+        <field name="name">company own class</field>
+        <field ref="model_school_club" name="model_id"/>
+        <field name="global" eval="True"/>
+        <field name="domain_force">[ ('school_id', 'in', company_ids )]</field>
+    </record>
+
+    <record id="department_company_record_rule" model="ir.rule">
+        <field name="name">company own class</field>
+        <field ref="model_school_department" name="model_id"/>
+        <field name="global" eval="True"/>
+        <field name="domain_force">[ ('school_id', 'in', company_ids )]</field>
+    </record>
+
+    <record id="academic_year_company_record_rule" model="ir.rule">
+        <field name="name">company own class</field>
+        <field ref="model_academic_year" name="model_id"/>
+        <field name="global" eval="True"/>
+        <field name="domain_force">[ ('school_id', 'in', company_ids )]</field>
+    </record>
+
+</odoo>
