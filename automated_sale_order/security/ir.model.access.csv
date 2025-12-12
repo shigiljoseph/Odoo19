@@ -1,0 +1,3 @@
+id,name,model_id/id,group_id/id,perm_read,perm_write,perm_create,perm_unlink
+
+access_buy_product,access_buy.product,model_buy_product,base.group_user,1,1,1,1

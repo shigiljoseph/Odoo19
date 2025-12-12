@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<odoo>
+
+    <record id="student_leave_form_view" model="ir.ui.view">
+        <field name="name">Student Leave</field>
+        <field name="model">student.leave</field>
+        <field name="arch" type="xml">
+            <form String="view">
+                <sheet>
+                    <group>
+                        <field name="student_id"/>
+                        <field name="student_class_id"/>
+                        <field name="half_day"/>
+                        <field name="start_date"/>
+                        <field name="end_date" invisible="half_day"/>
+                        <field name="total_days"/>
+                    </group>
+                    <notebook>
+                        <page string="Reason">
+                                <field name="reason"/>
+                        </page>
+                    </notebook>
+                </sheet>
+                <chatter/>
+            </form>
+        </field>
+    </record>
+
+    <record id="student_leave_list_view" model="ir.ui.view">
+        <field name="name">Student Leave</field>
+        <field name="model">student.leave</field>
+        <field name="arch" type="xml">
+            <list string="view">
+                <field name="student_id"/>
+                <field name="student_class_id"/>
+                <field name="half_day"/>
+                <field name="total_days"/>
+            </list>
+        </field>
+    </record>
+
+
+    <record id="student_leave_action" model="ir.actions.act_window">
+        <field name="name">Student Leave</field>
+        <field name="res_model" >student.leave</field>
+        <field name="view_mode">list,form</field>
+    </record>
+</odoo>

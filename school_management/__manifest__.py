@@ -1,0 +1,77 @@
+# -*- coding: utf-8 -*-
+
+{
+    "name":"School Management",
+    'version': '1.3',
+    'sequence':1,
+    "data":[
+        'security/groups.xml',
+        'security/record_rules.xml',
+        'security/ir.model.access.csv',
+        'data/department_data.xml',
+        'data/student_class_data.xml',
+        'data/subjects_data.xml',
+        'data/sequence_data.xml',
+        'data/ir_cron.xml',
+        'data/event_email_template.xml',
+        'data/user_creation_automated_action.xml',
+        'data/user_invitation_email_template.xml',
+        'data/user_creation_employee_automated_action.xml',
+        'data/employee_invitation_email_template.xml',
+        'views/event_details_template.xml',
+        'views/student_registration_template.xml',
+        'views/student_leave_template.xml',
+        'views/school_events_template.xml',
+        'views/breadcrumbs_template.xml',
+        'views/department_views.xml',
+        'views/student_class_views.xml',
+        'views/subjects_views.xml',
+        'views/academic_year_views.xml',
+        'views/student_registration_views.xml',
+        'views/school_club_views.xml',
+        'views/school_events_views.xml',
+        'views/website_cart.xml',
+        'views/sale_order_views.xml',
+        'views/res_partner_views.xml',
+        'views/school_teacher_views.xml',
+        'views/school_office_staff_views.xml',
+        'views/student_leave_views.xml',
+        'views/student_leave_views.xml',
+        'views/student_exam_views.xml',
+        'views/school_students_views.xml',
+        'views/snippets/s_school_event_snippet.xml',
+        'report/student_report_template.xml',
+        'report/student_reports.xml',
+        'wizard/leave_information_wizard_view.xml',
+        'wizard/event_details_wizard_view.xml',
+        'wizard/club_information_wizard_view.xml',
+        'views/school_management_menu.xml',
+        'views/website_menu.xml'
+    ],
+    'assets': {
+            'web.assets_backend': [
+                'school_management/static/src/js/action_manager.js'
+            ],
+            'web.assets_frontend': [
+                'school_management/static/src/js/**/*.js',
+                'school_management/static/src/s_school_events/snippet.xml',
+                'school_management/static/src/s_school_events/**/*.js',
+            ],
+        },
+    'depends': [
+                    'base',
+                    'mail',
+                    'sale',
+                    'contacts',
+                    'base_automation',
+                    'spreadsheet',
+                    'web',
+                    'website',
+                    'purchase',
+                    'website_sale'
+                ],
+    "application": True,
+    'license': 'LGPL-3',
+    'auto_install': True
+
+}

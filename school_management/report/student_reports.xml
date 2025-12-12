@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <!--    Leave Information Template -->
+    <record id="action_leave_information_report" model="ir.actions.report">
+        <field name="name">Student Leave Report</field>
+        <field name="model">student.leave</field>
+        <field name="report_type">qweb-pdf</field>
+        <field name="report_name">school_management.leave_information_report</field>
+        <field name="report_file">school_management.leave_information_report</field>
+        <field name="binding_model_id" ref="school_management.model_student_registration"/>
+        <field name="paperformat_id" ref="account.paperformat_euro_bank_statement"/>
+        <field name="binding_type">report</field>
+    </record>
+
+    <!--    Event Information Template -->
+    <record id="action_event_information_report" model="ir.actions.report">
+        <field name="name">School Event Report</field>
+        <field name="model">school.events</field>
+        <field name="report_type">qweb-pdf</field>
+        <field name="report_name">school_management.event_information_report</field>
+        <field name="report_file">school_management.event_information_report</field>
+        <field name="binding_model_id" ref="school_management.model_student_registration"/>
+        <field name="binding_type">report</field>
+    </record>
+
+    <!--    Club Information Template -->
+    <record id="action_club_information_report" model="ir.actions.report">
+        <field name="name">School Club Report</field>
+        <field name="model">school.club</field>
+        <field name="report_type">qweb-pdf</field>
+        <field name="report_name">school_management.club_information_report</field>
+        <field name="report_file">school_management.club_information_report</field>
+        <field name="binding_model_id" ref="school_management.model_student_registration"/>
+        <field name="binding_type">report</field>
+    </record>
+    
+
+
+</odoo>

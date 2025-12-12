@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <!-- QWeb Template outside <data> -->
+    <template id="customer_sales_report.customer_sale_report_template">
+            <t t-call="web.html_container">
+                <t t-call="web.external_layout">
+                    <t t-foreach="sale_orders" t-as="order" t-key="o_index">
+                        <div class="page">
+                            <h2>Sales Report:
+                                <span t-esc="cust.name"/>
+                            </h2>
+                                <p>Period: <span t-esc="from_date"/> to <span t-esc="to_date"/></p>
+                            <table class="table table-bordered">
+                                <thead>
+                                    <tr>
+                                        <th>Order</th>
+                                        <th>Date</th>
+                                        <th>Customer</th>
+                                        <th>Amount</th>
+                                    </tr>
+                                </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td><t t-esc="order['name']"/></td>
+                                            <td><t t-esc="order['date_order']"/></td>
+                                            <td><t t-esc="order['customer_name']"/></td>
+                                            <td><t t-esc="order['amount_total']"/></td>
+                                        </tr>
+                                    </tbody>
+                            </table>
+                        </div>
+                    </t>
+                </t>
+            </t>
+    </template>
+</odoo>

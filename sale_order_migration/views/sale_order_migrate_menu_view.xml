@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <menuitem id="migrate_sale_order_menu_item" name="Migrate Sale Order" parent="sale.menu_sale_config"
+              action="migration_wizard_action" sequence="2" />
+</odoo>

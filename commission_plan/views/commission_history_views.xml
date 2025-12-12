@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <record id="view_commission_history_search_view" model="ir.ui.view">
+        <field name="name">Commission History Search</field>
+        <field name="model">commission.history</field>
+        <field name="arch" type="xml">
+            <search>
+                <group>
+                    <filter name="salesperson" string="Salesperson" context="{'group_by': 'user_id'}"/>
+                    <filter name="commission_date" string="Commission Date" context="{'group_by': 'date:month'}" />
+                </group>
+            </search>
+        </field>
+    </record>
+
+    <record id="view_commission_history_list_view" model="ir.ui.view">
+        <field name="name">Commission History List</field>
+        <field name="model">commission.history</field>
+        <field name="arch" type="xml">
+           <list >
+               <field name="sale_order_id"/>
+               <field name="commission_id"/>
+               <field name="date"/>
+               <field name="commission"/>
+           </list>
+        </field>
+    </record>
+
+    <record id="view_commission_history_view" model="ir.actions.act_window">
+        <field name="name">Commission History</field>
+        <field name="res_model">commission.history</field>
+        <field name="search_view_id" ref="view_commission_history_search_view"/>
+        <field name="view_mode" >list,search,form</field>
+    </record>
+</odoo>

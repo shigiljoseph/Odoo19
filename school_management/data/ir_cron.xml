@@ -1,0 +1,39 @@
+<odoo>
+
+<!--    To automatically set the state to ended when end_date is passed-->
+
+    <record id="ir_cron_auto_end_events" model="ir.cron">
+        <field name="name">Auto End Events</field>
+        <field name="model_id" ref="model_school_events"/>
+        <field name="state">code</field>
+        <field name="code">model._end_events()</field>
+        <field name="interval_number">1</field>
+        <field name="interval_type">days</field>
+        <field name="active">True</field>
+    </record>
+
+
+<!--    To sent mail 2 days before the start date-->
+
+    <record id="ir_cron_auto_send_remainder" model="ir.cron">
+        <field name="name">Send Event Remainder</field>
+        <field name="model_id" ref="model_school_events"/>
+        <field name="state">code</field>
+        <field name="code">model._send_event_remainder()</field>
+        <field name="interval_number">1</field>
+        <field name="interval_type">days</field>
+        <field name="active">True</field>
+    </record>
+
+<!--    To check the student is present today-->
+
+    <record id="ir_cron_auto_attendance_check" model="ir.cron">
+        <field name="name">Check attendance</field>
+        <field name="model_id" ref="model_student_leave"/>
+        <field name="state">code</field>
+        <field name="code">model._student_attendance_check()</field>
+        <field name="interval_number">1</field>
+        <field name="interval_type">days</field>
+        <field name="active">True</field>
+    </record>
+</odoo>

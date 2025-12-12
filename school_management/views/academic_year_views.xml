@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="academic_year_view_list" model="ir.ui.view">
+        <field name="name">Academic year</field>
+        <field name="model">academic.year</field>
+        <field name="arch" type="xml">
+            <list  editable="bottom">
+                <field name="year"/>
+            </list>
+        </field>
+    </record>
+
+    <record id="academic_year_action" model="ir.actions.act_window">
+        <field name="name">Academic year</field>
+        <field name="res_model">academic.year</field>
+        <field name="view_mode">list,form</field>
+    </record>
+</odoo>

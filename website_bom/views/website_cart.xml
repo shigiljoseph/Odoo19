@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <template id="cart_lines_inherit" inherit_id="website_sale.cart_lines" >
+        <xpath expr="//div[@id='cart_products']//div[contains(@class, 'o_cart_product')]" position="after">
+
+            <t t-if="line.product_id in website.product_ids">
+                <t t-set="bom" t-value="request.env['mrp.bom'].sudo().search([
+                    ('product_tmpl_id', '=', line.product_id.product_tmpl_id.id)
+                ])"/>
+
+                <t t-if="bom">
+                    <ul class="mt-2 ms-3 text-muted">
+                        <li class="fw-bold">Components:</li>
+                        <t t-foreach="bom.bom_line_ids" t-as="comp">
+                            <li>
+                                 <a t-att-href="'/shop/' + slug(comp.product_tmpl_id)" class="text-reset text-decoration-underline">
+                                    <t t-esc="comp.product_id.display_name"/> -
+                                </a>
+                                <t t-esc="comp.product_qty"/> unit(s)
+                            </li>
+                        </t>
+                    </ul>
+                </t>
+            </t>
+        </xpath>
+    </template>
+</odoo>

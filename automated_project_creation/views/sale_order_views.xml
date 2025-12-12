@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <record id="view_order_line_tree" model="ir.ui.view">
+        <field name="name">sale Order</field>
+        <field name="model">sale.order</field>
+        <field name="inherit_id" ref="sale.view_order_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="/form/header" position="inside">
+                <button name="action_project_create" type="object" string="Create Project" invisible="created" />
+                <button name="action_project_update" type="object" string="Update Project" invisible="not created"/>
+            </xpath>
+            <xpath expr="/form/sheet/notebook/page/field[@name='order_line']/list/field[@name='price_unit']" position="after">
+                <field name="milestone"/>
+            </xpath>
+        </field>
+    </record>
+
+</odoo>

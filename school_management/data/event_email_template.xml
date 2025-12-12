@@ -1,0 +1,22 @@
+<odoo>
+    <record id="email_template_event_reminder" model="mail.template">
+        <field name="name">Event Reminder Email</field>
+        <field name="model_id" ref="school_management.model_school_events"/>
+        <field name="subject">Reminder: Your event {{object.name}} starts soon!</field>
+        <field name="email_from">{{object.school_id.email}}</field>
+        <field name="body_html" type="html">
+            <div >
+                <p>Hello,</p>
+                <p>This is a reminder that the event
+                    <strong>
+                        <t t-out="object.name"/>
+                    </strong>
+                    will start on
+                    <strong>
+                        <t t-out="object.start_date"/>
+                    </strong>.</p>
+                <p>Thank you.</p>
+            </div>
+        </field>
+    </record>
+</odoo>

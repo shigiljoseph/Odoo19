@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <data>
+        <record id="view_customer_sale_report_form" model="ir.ui.view">
+            <field name="name">customer.sale.report.form</field>
+            <field name="model">customer.sale.report</field>
+            <field name="arch" type="xml">
+                <form>
+                    <header>
+                        <button name="action_confirm" type="object" string="Confirm" class="btn-primary"
+                                invisible="status == 'confirmed'"/>
+                        <button name="action_cancel" type="object" string="Cancel" invisible="status == 'cancel'"/>
+                        <field name="status" widget="statusbar" statusbar_visible="draft,confirmed,cancel"/>
+                    </header>
+                    <sheet>
+                        <group>
+                            <field name="customer_ids" widget="many2many_tags" placeholder="Select Customers"/>
+                            <field name="sales_team_id"/>
+                            <field name="type"/>
+                            <field name="from_date"/>
+                            <field name="to_date"/>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record id="view_sale_order_migration_tree" model="ir.ui.view">
+            <field name="name">customer.sale.report.list</field>
+            <field name="model">customer.sale.report</field>
+            <field name="arch" type="xml">
+                <list>
+                    <field name="customer_ids" widget="many2many_tags" placeholder="Customers"/>
+                    <field name="sales_team_id"/>
+                    <field name="type"/>
+                    <field name="from_date"/>
+                    <field name="to_date"/>
+                </list>
+            </field>
+        </record>
+
+        <record id="customer_sale_report_view" model="ir.actions.act_window">
+            <field name="name">Customer sale report</field>
+            <field name="res_model">customer.sale.report</field>
+            <field name="view_mode">list,form</field>
+        </record>
+
+        <menuitem id="customer_sale_report_menu_item" name="customer Sale report" parent="sale.menu_sale_config"
+              action="customer_sale_report_view" sequence="2" />
+
+    </data>
+</odoo>

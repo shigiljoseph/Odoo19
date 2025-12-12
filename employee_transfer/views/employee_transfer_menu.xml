@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <menuitem id="transfer_request_menu_item" name="Transfer Request" parent="hr.menu_human_resources_configuration"
+              action="employee_transfer.employee_transfer_view" sequence="2" />
+</odoo>

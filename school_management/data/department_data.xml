@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="department_data_lp" model="school.department">
+            <field name="name">LP</field>
+        </record>
+
+        <record id="department_data_up" model="school.department">
+            <field name="name">UP</field>
+        </record>
+
+        <record id="department_data_hs" model="school.department">
+            <field name="name">HS</field>
+        </record>
+
+    </data>
+</odoo>
+

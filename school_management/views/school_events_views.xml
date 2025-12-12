@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+
+    <record id="school_event_form_view" model="ir.ui.view">
+        <field name="name">Events</field>
+        <field name="model">school.events</field>
+        <field name="arch" type="xml">
+            <form>
+                <header>
+                    <button name="action_start" type="object" string="Start" class="btn-primary"
+                            invisible="status != 'draft'"/>
+                    <button name="action_end" type="object" string="End" invisible="status == 'end' or status == 'cancel'"/>
+                    <button name="action_cancel" type="object" string="Cancel" invisible="status == 'cancel'"/>
+                    <button name="action_send_mail" type="object" string="Send Mail Test" class="oe_stat_button"/>
+
+                    <field name="status" widget="statusbar" statusbar_visible="draft,start,end,cancel"/>
+                    </header>
+                <sheet>
+                    <widget name="web_ribbon" title="Ended" bg_color="text-bg-success" invisible="status != 'end'"/>
+                    <group>
+                        <group>
+                            <field name="name"/>
+                            <field name="club_id"/>
+                            <field name="create_date"/>
+                            <field name="active" invisible="True"/>
+                        </group>
+                        <group>
+                            <field name="image" widget="image"/>
+                            <field name="school_id" string="Organizer"/>
+                            <field name="start_date"/>
+                            <field name="end_date"/>
+                        </group>
+                    </group>
+
+                    <notebook>
+                        <page string="Description">
+                            <field name="description"/>
+                        </page>
+                    </notebook>
+                </sheet>
+                <chatter/>
+            </form>
+        </field>
+    </record>
+
+    <record id="school_event_view_search" model="ir.ui.view">
+        <field name="name">Search </field>
+        <field name="model">school.events</field>
+        <field name="arch" type="xml">
+            <search string="view">
+                <filter string="Ended" domain="[('active','=',False)]" name="ended"/>
+            </search>
+        </field>
+    </record>
+
+    <record id="school_event_view_list" model="ir.ui.view">
+        <field name="name">Event </field>
+        <field name="model">school.events</field>
+        <field name="arch" type="xml">
+            <list string="view" >
+                <field name="name"/>
+                <field name="club_id"/>
+                <field name="start_date"/>
+                <field name="end_date"/>
+                <field name="status"/>
+            </list>
+        </field>
+    </record>
+
+    <record id="school_events_action" model="ir.actions.act_window">
+        <field name="name">School Events</field>
+        <field name="res_model">school.events</field>
+        <field name="view_mode">list,form</field>
+    </record>
+</odoo>

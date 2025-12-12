@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="utf-8" ?>
+
+<odoo>
+
+    <record id="student_registration_view_form" model="ir.ui.view">
+        <field name="name">Registration</field>
+        <field name="model">student.registration</field>
+        <field name="arch" type="xml">
+            <form string="View" >
+                <header>
+                    <button name="action_register" type="object" string="Register" class="btn-primary"
+                            invisible="status == 'reg'"/>
+                    <button name="action_cancel" type="object" string="Cancel" invisible="status == 'cancel'"/>
+                    <field name="status" widget="statusbar" statusbar_visible="draft,cancel,reg"/>
+                </header>
+                <sheet>
+
+                    <group>
+                        <group>
+                            <h1><field name="sequence"/></h1><br/>
+                            <field name="admission_no"/>
+                            <field name="first_name"/>
+                            <field name="last_name"/>
+                            <field name="phone" widget="phone"/>
+                            <field name="email" widget="email"/>
+                            <field name="dob"/>
+                            <field name="age"/>
+                            <field name="adhar_no"/>
+                        </group>
+                        <group>
+                            <field name="photo" widget="image" class="oe_avatar" />
+                            <field name="father"/>
+                            <field name="mother"/>
+                            <field name="gender" widget="radio"/>
+                            <field name="club_ids" widget="many2many_tags" options="{'color_field':'color'}"/>
+                            <field name="reg_date"/>
+                        </group>
+                    </group>
+                    <notebook>
+                        <page string="Contact">
+                            <group>
+                                <field name="c_address"/>
+                                <field name="same_as_c_address"/>
+                                <field name="p_address" invisible="same_as_c_address"/>
+                            </group>
+                        </page>
+                        <page string="Academics">
+                            <group>
+                                <field name="school_id" />
+                                <field name="current_class_id"/>
+                                <field name="previous_dep_id"/>
+                                <field name="previous_class_id"/>
+                                <field name="tc" />
+                            </group>
+                        </page>
+                        <page string="Exams">
+                            <field name="exam_ids" readonly="1" >
+                                <list string="view" >
+                                    <field name="name"/>
+                                    <field name="class_id"/>
+                                    <field name="state"/>
+                                </list>
+                            </field>
+                        </page>
+                    </notebook>
+                </sheet>
+                <chatter/>
+            </form>
+        </field>
+    </record>
+
+    <record id="student_registration_view_list" model="ir.ui.view">
+        <field name="name">Registration</field>
+        <field name="model">student.registration</field>
+        <field name="arch" type="xml">
+            <list string="view" editable="bottom" open_form_view="1" decoration-success="attendance == False and status == 'reg'"
+                  decoration-danger="attendance == True and status == 'reg'" >
+                <field name="sequence"/>
+                <field name="first_name"/>
+                <field name="last_name"/>
+                <field name="email"/>
+                <field name="phone"/>
+                <field name="dob"/>
+                <field name="reg_date" optional="1"/>
+                <field name="current_class_id"/>
+            </list>
+        </field>
+    </record>
+
+
+    <record id="student_registration_view_kanban" model="ir.ui.view">
+        <field name="name">Registration </field>
+        <field name="model">student.registration</field>
+        <field name="arch" type="xml">
+            <kanban class="o_kanban_mobile" sample="1" quick_create="false">
+               <progressbar field="activity_state"
+                   colors='{"planned": "success", "today": "warning", "overdue": "danger"}'/>
+               <templates>
+                   <t t-name="card">
+                       <div class="d-flex mb-2" style="justify-content: space-between;">
+                           <field name="sequence" class="fw-bolder fs-5" />
+                           <field name="reg_date" class="ms-1 text-muted fs-5"/>
+                       </div>
+                       <footer class="align-items-end">
+                            <div class="d-flex flex-wrap gap-1 text-muted text-nowrap">
+                                <field name="first_name"/>
+                               <field name="last_name"/>
+                            </div>
+                            <field name="status" widget="label_selection" options="{'classes': {'draft': 'info', 'cancel': 'default', 'register': 'success'}}" class="ms-auto"/>
+                        </footer>
+                   </t>
+               </templates>
+           </kanban>
+        </field>
+    </record>
+
+    <record id="student_registration_action" model="ir.actions.act_window">
+        <field name="name">Registration</field>
+        <field name="res_model">student.registration</field>
+        <field name="view_mode">list,form,kanban</field>
+        <field name="domain">[('status','=', 'draft')]</field>
+    </record>
+</odoo>

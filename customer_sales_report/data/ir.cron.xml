@@ -1,0 +1,15 @@
+<odoo>
+
+<!--    To automatically send sale report for the  customers-->
+
+    <record id="ir_cron_send_customer_sale_report" model="ir.cron">
+        <field name="name">Customer Sale Report</field>
+        <field name="model_id" ref="model_customer_sale_report"/>
+        <field name="state">code</field>
+        <field name="code">model.action_sent_report()</field>
+        <field name="interval_number">1</field>
+        <field name="interval_type">days</field>
+        <field name="active">True</field>
+    </record>
+
+</odoo>

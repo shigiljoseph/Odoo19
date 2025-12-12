@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <template id="s_school_event_snippet" name="School Event Snippet">
+        <section class="s_school_event_snippet">
+        <div class="events_section">
+            <div class="container">
+                <h1>School Events</h1>
+                <img src="/school_management/static/src/images/snippets/event.jpeg" style="height=500px; width=300px;"/>
+            </div>
+        </div>
+        </section>
+    </template>
+    <template id="snippets" inherit_id="website.snippets" name="Airproof - Snippets">
+   <!-- Create the group -->
+       <xpath expr="//snippets[@id='snippet_groups']/*[1]" position="before">
+          <t snippet-group="events" t-snippet="website.s_snippet_group" string="School Events"
+             t-thumbnail="/school_management/static/src/images/snippets/thumb.png"/>
+       </xpath>
+
+        <!-- Add the custom snippet to the group -->
+       <xpath expr="//snippets[@id='snippet_structure']/*[1]" position="before">
+          <t t-snippet="school_management.s_school_event_snippet" string="Custom snippet" group="events">
+             <keywords>Snippet</keywords>
+          </t>
+       </xpath>
+    </template>
+</odoo>

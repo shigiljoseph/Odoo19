@@ -1,0 +1,19 @@
+
+<odoo>
+
+    <menuitem id="test_menu_root" name="Estate" />
+
+    <menuitem id="test_first_level_menu" name="Advertisement" parent="test_menu_root" action="test_model_action"/>
+
+    <menuitem id="estate_settings" name="settings" parent="test_menu_root" />
+
+    <menuitem id="property_type_menu" name="property_type" parent="estate_settings" action="property_model_action"/>
+
+    <menuitem id="property_tag_menu" name="property tag" parent="estate_settings" action="property_tag_action"/>
+
+    <menuitem id="estate_offer_menu" name="estate offer" parent="estate_settings" action="estate_offer_action"/>
+<!--    <menuitem id="test_menu_root" name="Test">-->
+<!--        <menuitem id="test_first_level_menu" name="First Level" action="test_model_action"/>-->
+<!--    </menuitem>-->
+
+</odoo>

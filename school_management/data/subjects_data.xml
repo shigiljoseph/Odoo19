@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data noupdate="1">
+
+        <record id="subject_data_maths" model="subjects">
+            <field name="name">Maths</field>
+            <field name="department_id" ref="department_data_lp"/>
+        </record>
+
+        <record id="subject_data_physics" model="subjects">
+            <field name="name">Physics</field>
+            <field name="department_id" ref="department_data_up"/>
+        </record>
+
+        <record id="subject_data_computer" model="subjects">
+            <field name="name">Computer</field>
+            <field name="department_id" ref="department_data_hs"/>
+        </record>
+
+    </data>
+</odoo>

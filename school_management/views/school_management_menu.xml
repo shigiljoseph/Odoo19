@@ -1,0 +1,44 @@
+<odoo>
+
+    <menuitem id="root_menu" name="School Management" />
+
+    <menuitem id="student_menu" name="Students" parent="root_menu" sequence="1"/>
+
+    <menuitem id="school_student_menu" name="Students" parent="student_menu" action="school_students_action"/>
+
+    <menuitem id="student_registration_menu" name="Registration" parent="student_menu" action="student_registration_action"/>
+
+    <menuitem id="club_menu" name="Club" parent="root_menu" sequence="2" action="school_club_action"  />
+
+    <menuitem id="employee_menu" name="Employee" parent="root_menu" sequence="3"/>
+
+    <menuitem id="employee_teacher_menu" name="Teachers" parent="employee_menu" action="school_teacher_action"/>
+
+    <menuitem id="employee_office_staff_menu" name="Office staff" parent="employee_menu" action="school_office_staff_action"/>
+
+    <menuitem id="student_leave_menu" name="Leaves" sequence="4" action="student_leave_action" parent="root_menu"/>
+
+    <menuitem id="student_exam_menu" name="Exam" sequence="5" action="student_exam_action" parent="root_menu"/>
+
+    <menuitem id="report_menu" name="Report" parent="root_menu" sequence="6" />
+
+    <menuitem id="leave_information_report_menu" name="Leave information" parent="report_menu" action="leave_information_wizard_view"/>
+
+    <menuitem id="event_information_report_menu" name="Event details" parent="report_menu" action="event_details_wizard_view"/>
+
+    <menuitem id="club_information_report_menu" name="Club Report" parent="report_menu"  action="club_details_wizard_view"/>
+
+    <menuitem id="configuration_menu" name="Configuration" parent="root_menu" />
+
+    <menuitem id="configuration_department_menu" name="Departments" parent="configuration_menu" action="department_action"/>
+
+    <menuitem id="configuration_student_class_menu" name="Class" parent="configuration_menu" action="student_class_action"/>
+
+    <menuitem id="configuration_subjects_menu" name="Subject" parent="configuration_menu" action="subjects_action"/>
+
+    <menuitem id="configuration_academic_year_menu" name="Academic year" parent="configuration_menu" action="academic_year_action"/>
+
+    <menuitem id="configuration_events_menu" name="Events" parent="configuration_menu" action="school_events_action"/>
+
+
+</odoo>

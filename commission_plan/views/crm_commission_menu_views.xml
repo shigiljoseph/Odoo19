@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <menuitem id="crm_commission_plan_menu_item" name="Commission Plan" parent="crm.crm_menu_config"
+              action="commission_plan.crm_commission_view" sequence="2"/>
+    <menuitem id="crm_commission_menu_item" name="Commission" parent="crm.crm_menu_config"
+              action="commission_plan.res_users_view" sequence="3"/>
+</odoo>

@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="offer_list" model="ir.ui.view">
+        <field name="name">offer</field>
+        <field name="model">estate.offer</field>
+        <field name="arch" type="xml">
+            <list string="Tests" editable="bottom" decoration-danger="status == 'no'" decoration-success="status == 'yes'" decoration-bf="status == 'yes'">
+                <field name="partner_id"/>
+                <field name="price"/>
+                <field name="property_type_ids" string="Property Type"/>
+                <field name="date_deadline"/>
+                <field name="validity"/>
+                <button type="object" name="cancel_offer"  invisible="status != 'nill'" icon="fa-times" />
+                <button type="object" name="accept_offer"  invisible="status != 'nill'" icon="fa-check"/>
+                <field name="status"/>
+            </list>
+        </field>
+    </record>
+
+
+    <record id="estate_offer_form" model="ir.ui.view">
+        <field name="name">Estate offer form</field>
+        <field name="model">estate.offer</field>
+        <field name="arch" type="xml">
+            <form >
+                <sheet>
+                    <group>
+                        Price  <field name="price" string="Price"/>
+                        Partner <field name="partner_id" string="Partner"/>
+                        Date <field name="date" string="Date"/>
+                        Validity <field name="validity" string="Validity"/>
+                        Dead Line<field name="date_deadline" string="Dead Line"/>
+                    </group>
+
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="estate_offer_action" model="ir.actions.act_window">
+        <field name="name">offer</field>
+        <field name="res_model">estate.offer</field>
+        <field name="view_mode">list,form,search</field>
+    </record>
+</odoo>

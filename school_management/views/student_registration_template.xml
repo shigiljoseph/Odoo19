@@ -1,0 +1,399 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+
+<!--    Student Registration template-->
+
+    <template id="web_form_template" name="Student Form">
+       <t t-call="portal.portal_layout">
+           <div id="wrap" class="oe_structure oe_empty">
+                   <div class="container student">
+                       <form action="/webform/submit" enctype="multipart/form-data" class="o_mark_required" method="POST">
+                           <input type="hidden" name="csrf_token" t-att-value="request.csrf_token()"/>
+                           <div class="p-4 bg-light rounded shadow-sm">
+                               <h2 class="text-center mb-4">Student Registration</h2>
+                           </div>
+                           <div class="row">
+                               <!-- Name Field -->
+                               <div class="form-group col-12">
+                                   <div class="row">
+                                       <label class="col-form-label col-sm-auto" style="width: 200px;" for="first_name">
+                                           First Name<span class="text-danger"> *</span>
+                                       </label>
+                                       <div >
+                                           <input id="first_name" type="text" class="form-control" name="first_name" required="1"/>
+                                       </div>
+                                   </div>
+
+                                   <div class="row">
+                                       <label class="col-form-label col-sm-auto" style="width: 200px;" for="last_name">
+                                           Last Name<span class="text-danger"> *</span>
+                                       </label>
+                                       <div>
+                                           <input id="first_name" type="text" class="form-control" name="last_name" required="1"/>
+                                       </div>
+                                   </div>
+                               </div>
+
+                               <!-- Email Field -->
+                               <div class="form-group col-12">
+                                   <div class="row">
+                                       <label class="col-form-label col-sm-auto" style="width: 200px;" for="email">
+                                           Email<span class="text-danger"> *</span>
+                                       </label>
+                                       <div>
+                                           <input id="email" type="email" class="form-control" name="email" required="1"/>
+                                       </div>
+                                   </div>
+                               </div>
+
+                               <!-- Phone Field -->
+                               <div class="form-group col-12">
+                                   <div class="row">
+                                       <label class="col-form-label col-sm-auto" style="width: 200px;" for="phone">
+                                           Phone<span class="text-danger"> *</span>
+                                       </label>
+                                       <div>
+                                           <input id="phone" type="text" class="form-control" name="phone" required="1"/>
+                                       </div>
+                                   </div>
+                               </div>
+
+                               <!-- Gender Field -->
+                              <div class="gender-radio-group">
+                                  <input type="radio" id="male" name="gender" value="male" required="1"/>
+                                  <label for="male">Male</label>
+
+                                  <input type="radio" id="female" name="gender" value="female" required="1"/>
+                                  <label for="female">Female</label>
+
+                                  <input type="radio" id="other" name="gender" value="other" required="1"/>
+                                  <label for="other">Other</label>
+                                </div>
+
+                               <!--  DOB-->
+                               <div class="form-group col-12">
+                                   <div class="row">
+                                       <label class="col-form-label col-sm-auto" style="width: 200px;" for="dob">
+                                           DOB<span class="text-danger"> *</span>
+                                       </label>
+                                       <div >
+                                           <input id="dob" type="date" class="form-control" name="dob" required="1"/>
+                                       </div>
+                                   </div>
+                               </div>
+
+
+                               <div class="form-group col-12">
+                                   <div class="row">
+                                       <label class="col-form-label col-sm-auto" style="width: 200px;" for="age">
+                                           Age<span class="text-danger"> *</span>
+                                       </label>
+                                       <div >
+                                           <input id="age" type="number" class="form-control" name="age" required="1" readonly="1"/>
+                                       </div>
+                                   </div>
+                               </div>
+
+                               <div class="form-group col-12">
+                                   <div class="row">
+                                       <label class="col-form-label col-sm-auto" style="width: 200px;" for="father_name">
+                                           Current Class<span class="text-danger"> *</span>
+                                       </label>
+                                        <div >
+                                        <select name="class_id" class="form-control" required="1">
+                                             <option>  </option>
+                                            <t t-foreach="stud_class" t-as="c">
+                                            <option t-att-value="c.id"><t t-esc="c.name"/></option>
+                                            </t>
+                                        </select>
+                                        </div>
+                                   </div>
+                               </div>
+                               <!-- Name Field -->
+                               <div class="form-group col-12">
+                                   <div class="row">
+                                       <label class="col-form-label col-sm-auto" style="width: 200px;" for="father_name">
+                                           Father Name<span class="text-danger"> *</span>
+                                       </label>
+                                       <div>
+                                           <input id="father_name" type="text" class="form-control" name="father_name" required="1"/>
+                                       </div>
+                                   </div>
+                               </div>
+
+                               <div class="form-group col-12">
+                                   <div class="row">
+                                       <label class="col-form-label col-sm-auto" style="width: 200px;" for="mother_name">
+                                           Mother Name<span class="text-danger"> *</span>
+                                       </label>
+                                       <div>
+                                           <input id="mother_name" type="text" class="form-control" name="mother_name" required="1"/>
+                                       </div>
+                                   </div>
+                               </div>
+                               <br/>
+                               <!-- Submit Button -->
+                               <div class="form-group col-12" align="center">
+                                   <br/>
+                                   <div style="width: 200px;"></div>
+                                   <a t-attf-href="/student_list">
+                                        <button id="cancel_btn" style=" padding: 6px 12px; margin: 2px; border-radius: 4px; ">
+                                       Cancel</button>
+                                   </a>
+                                   <button type="submit" class="btn btn-primary" >Submit</button>
+                               </div>
+                           </div>
+                       </form>
+                   </div>
+           </div>
+       </t>
+    </template>
+
+
+<!--  Edit student registration details-->
+
+    <template id="form_template" name="Student Form">
+       <t t-call="portal.portal_layout">
+           <div id="wrap" class="oe_structure oe_empty">
+                   <div class="container student">
+                       <form action="/edit_form/submit" enctype="multipart/form-data" class="o_mark_required" method="POST">
+                           <input type="hidden" name="csrf_token" t-att-value="request.csrf_token()"/>
+                           <div class="p-4 bg-light rounded shadow-sm">
+                               <h2 class="text-center mb-4">Student Registration</h2>
+                           </div>
+
+                           <div class="row">
+                               <!-- Name Field -->
+                               <div class="form-group col-12">
+                                   <div class="row">
+                                       <label class="col-form-label col-sm-auto" style="width: 200px;" for="first_name">
+                                           First Name<span class="text-danger"> *</span>
+                                       </label>
+                                       <div >
+                                           <input id="first_name" type="text" class="form-control" name="first_name" t-att-value="student.first_name" />
+                                       </div>
+                                   </div>
+
+                                   <div class="row">
+                                       <label class="col-form-label col-sm-auto" style="width: 200px;" for="last_name">
+                                           Last Name<span class="text-danger"> *</span>
+                                       </label>
+                                       <div>
+                                           <input id="first_name" type="text" class="form-control" name="last_name" t-att-value="student.last_name" />
+                                       </div>
+                                   </div>
+                               </div>
+
+                               <!-- Email Field -->
+                               <div class="form-group col-12">
+                                   <div class="row">
+                                       <label class="col-form-label col-sm-auto" style="width: 200px;" for="email">
+                                           Email<span class="text-danger"> *</span>
+                                       </label>
+                                       <div>
+                                           <input id="email" type="email" class="form-control" name="email" t-att-value="student.email" />
+                                       </div>
+                                   </div>
+                               </div>
+
+                               <!-- Phone Field -->
+                               <div class="form-group col-12">
+                                   <div class="row">
+                                       <label class="col-form-label col-sm-auto" style="width: 200px;" for="phone">
+                                           Phone<span class="text-danger"> *</span>
+                                       </label>
+                                       <div>
+                                           <input id="phone" type="text" class="form-control" name="phone" t-att-value="student.phone" />
+                                       </div>
+                                   </div>
+                               </div>
+
+
+                               <!-- Gender Field -->
+                              <div class="gender-radio-group">
+
+                                  <input type="radio" id="male" name="gender" value="male"
+                                       t-att-checked="student.gender == 'male' and 'checked' or None"/>
+                                <label for="male">Male</label>
+
+                                <input type="radio" id="female" name="gender" value="female"
+                                       t-att-checked="student.gender == 'female' and 'checked' or None"/>
+                                <label for="female">Female</label>
+
+                                <input type="radio" id="other" name="gender" value="other"
+                                       t-att-checked="student.gender == 'other' and 'checked' or None"/>
+                                <label for="other">Other</label>
+                                </div>
+
+
+                               <!--  DOB-->
+                               <div class="form-group col-12">
+                                   <div class="row">
+                                       <label class="col-form-label col-sm-auto" style="width: 200px;" for="dob">
+                                           DOB<span class="text-danger"> *</span>
+                                       </label>
+                                       <div >
+                                           <input id="dob" type="date" class="form-control" name="dob" t-att-value="student.dob" />
+                                       </div>
+                                   </div>
+                               </div>
+
+
+                               <div class="form-group col-12">
+                                   <div class="row">
+                                       <label class="col-form-label col-sm-auto" style="width: 200px;" for="age">
+                                           Age<span class="text-danger"> *</span>
+                                       </label>
+                                       <div >
+                                           <input id="age" type="number" class="form-control" name="age" t-att-value="student.age" />
+                                       </div>
+                                   </div>
+                               </div>
+
+                               <div class="form-group col-12">
+                                   <div class="row">
+                                       <label class="col-form-label col-sm-auto" style="width: 200px;" for="current_class_id">
+                                           Current Class<span class="text-danger"> *</span>
+                                       </label>
+                                        <div >
+                                            <select name="class_id" class="form-control" required="1">
+                                                <t t-foreach="stud_class" t-as="c">
+                                                    <option t-att-value="c.id"
+                                                            t-att-selected="c.id == student.current_class_id.id">
+                                                        <t t-esc="c.name"/>
+                                                    </option>
+                                                </t>
+                                            </select>
+                                        </div>
+                                   </div>
+                               </div>
+                               <!-- Name Field -->
+                               <div class="form-group col-12">
+                                   <div class="row">
+                                       <label class="col-form-label col-sm-auto" style="width: 200px;" for="father">
+                                           Father Name<span class="text-danger"> *</span>
+                                       </label>
+                                       <div>
+                                           <input id="father" type="text" class="form-control" name="father" t-att-value="student.father"/>
+                                       </div>
+                                   </div>
+                               </div>
+
+                               <div class="form-group col-12">
+                                   <div class="row">
+                                       <label class="col-form-label col-sm-auto" style="width: 200px;" for="mother">
+                                           Mother Name<span class="text-danger"> *</span>
+                                       </label>
+                                       <div>
+                                           <input id="mother" type="text" class="form-control" name="mother" t-att-value="student.mother"/>
+                                       </div>
+                                   </div>
+                               </div>
+                               <br/>
+                               <!-- Submit Button -->
+                               <div class="form-group col-12" >
+                                   <br/>
+                                   <a t-attf-href="/student_list">
+                                        <button id="cancel_btn" style=" padding: 6px 12px; margin: 2px; border-radius: 4px; ">
+                                       Cancel</button>
+                                   </a>
+                                   <input type="hidden" name="student_id" t-att-value="student.id"/>
+                                   <button id="save_btn" class="btn btn-primary" >Save</button>
+                               </div>
+                           </div>
+                       </form>
+                   </div>
+           </div>
+       </t>
+    </template>
+
+<!--   Students list view-->
+
+    <template id="student_list" name="Student List">
+        <t t-call="portal.portal_layout">
+           <div id="wrap" class="oe_structure oe_empty">
+               <div class="container student">
+                   <input type="hidden" name="csrf_token" t-att-value="request.csrf_token()"/>
+                   <div class="p-4 bg-light rounded shadow-sm">
+                       <h2 class="text-center mb-4">Students </h2>
+                   </div>
+                   <button id="new_button" class="btn btn-primary">New</button>
+                   <div>
+                       <table style="border-collapse: collapse; width: 100%; font-family: Arial, sans-serif;  border-radius: 5px; overflow: hidden;">
+                          <tr>
+                            <th style="background: #007BFF; color: white; padding: 12px; text-align: center;">Register Number</th>
+                            <th style="background: #007BFF; color: white; padding: 12px; text-align: center;">First Name</th>
+                            <th style="background: #007BFF; color: white; padding: 12px; text-align: center;">Last Name</th>
+                            <th style="background: #007BFF; color: white; padding: 12px; text-align: center;">E-Mail</th>
+                            <th style="background: #007BFF; color: white; padding: 12px; text-align: center;">Phone</th>
+                            <th style="background: #007BFF; color: white; padding: 12px; text-align: center;">DOB</th>
+                            <th style="background: #007BFF; color: white; padding: 12px; text-align: center;">Class</th>
+                            <th style="background: #007BFF; color: white; padding: 12px; text-align: center;">Action</th>
+                          </tr>
+                          <t t-foreach="student" t-as="s">
+                            <tr style="border-bottom: 1px solid #ddd; background-color: #f9f9f9;">
+                              <td style="padding: 10px; text-align: center;"><t t-esc="s.sequence"/></td>
+                              <td style="padding: 10px; text-align: center;"><t t-esc="s.first_name"/></td>
+                              <td style="padding: 10px; text-align: center;"><t t-esc="s.last_name"/></td>
+                              <td style="padding: 10px; text-align: center;"><t t-esc="s.email"/></td>
+                              <td style="padding: 10px; text-align: center;"><t t-esc="s.phone"/></td>
+                              <td style="padding: 10px; text-align: center;"><t t-esc="s.dob"/></td>
+                              <td style="padding: 10px; text-align: center;"><t t-esc="s.current_class_id.name"/></td>
+                              <td style="padding: 10px; text-align: center;">
+                                <a t-attf-href="/student/{{ slug(s) }}">
+                                    <button id="edit_btn"
+                                        style=" padding: 6px 12px; margin: 2px; border-radius: 4px; ">
+                                    Edit</button>
+                                </a>
+                                  <t t-if="s.status != 'reg'">
+                                <a t-attf-href="/student_reg/{{ s.id }}">
+                                    <button id="register_btn"
+                                        class="btn btn-primary">
+                                    Register</button>
+                                </a>
+                                  </t>
+                              </td>
+                            </tr>
+                          </t>
+                        </table>
+                   </div>
+               </div>
+           </div>
+        </t>
+    </template>
+
+
+<!--    Thanks page-->
+
+    <template id="thank_you" name="Thank You">
+        <t t-call="website.layout">
+            <div id="wrap" class="oe_structure oe_empty">
+                <section class="s_text_block pt40 pb40 o_colored_level">
+                    <div class="container s_allow_columns">
+                        <div class="row">
+                            <div class="col-lg-6 offset-lg-1 text-center">
+                                <div class="d-inline-block mx-auto p-4">
+                                    <i class="fa fa-paper-plane fa-2x mb-3 rounded-circle text-bg-success" role="presentation"/>
+                                    <h1 class="fw-bolder">Thank You!</h1>
+                                    <h2 class="fw-bolder">Registration Number: <span t-esc="student.sequence"/></h2>
+                                    <p class="lead mb-0">Successfully submitted.</p>
+                                    <a href="/student_list">Go to Homepage</a>
+                                </div>
+                            </div>
+                            <div class="col-lg-4 offset-lg-1">
+                                <h5>My Company</h5>
+                                <ul class="list-unstyled mb-0 ps-2">
+                                    <li><i class="fa fa-map-marker fa-fw me-2"/><span class="o_force_ltr">3575 Fake Buena Vista Avenue</span></li>
+                                    <li><i class="fa fa-phone fa-fw me-2"/><span class="o_force_ltr">+1 555-555-5556</span></li>
+                                    <li><i class="fa fa-envelope fa-fw me-2"/><span>info@yourcompany.example.com</span></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+            <input t-if='website.plausible_shared_key' type='hidden' class='js_plausible_push' data-event-name='Lead Generation' data-event-params='{"CTA": "Contact Us"}' />
+        </t>
+    </template>
+
+</odoo>

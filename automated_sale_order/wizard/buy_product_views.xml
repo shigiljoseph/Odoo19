@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+
+    <record id="buy_product_wizard_form_view" model="ir.ui.view">
+        <field name="name">Buy Product Wizard</field>
+        <field name="model">buy.product</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="product_template_id" invisible="1"/>
+                            <field name="name"/>
+                            <field name="partner_id"/>
+                        </group>
+                        <group>
+                            <field name="quantity"/>
+                            <field name="price"/>
+                        </group>
+                    </group>
+                </sheet>
+                <footer>
+                    <button name="action_buy" type="object" string="Buy" class="btn-primary"/>
+                    <button string="Discard" special="cancel" class="oe_link"/>
+                </footer>
+            </form>
+        </field>
+    </record>
+</odoo>
