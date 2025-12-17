@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <template id="custom_todo" name="Custom To do">
+        <t t-call="website.layout">
+            <div class="todo-list-widget">
+                <div class="todo-header">
+                    <input type="text" class="todo-input" placeholder="What needs to be done?"/>
+                    <button class="add-btn">Add</button>
+                </div>
+                <div class="todo-items"></div>
+                <div class="todo-footer">
+                    <span class="todo-count"></span>
+                    <div class="filters">
+                        <button class="filter-all active">All</button>
+                        <button class="filter-active">Active</button>
+                        <button class="filter-completed">Completed</button>
+                    </div>
+                </div>
+            </div>
+        </t>
+    </template>
+</odoo>
